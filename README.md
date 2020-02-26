@@ -24,7 +24,7 @@ Workspaces which are accesible from all workspace groups without switching the c
 * minimal additional keybindings
 
 # Roadmap
-Currently implemented with a minimal patch to i3 and a Python script. It's super hacky, though it seems to work for the most part. I would like to implement it in a better, more thought-out way.
+Currently implemented with a minimal patch to i3 and a Python script (which I am not going to put in this repo). It's super hacky, though it seems to work for the most part. I would like to implement it in a better, more thought-out way in this repo.
 
 # Motivation
 I naturally found myself wanting this feature through frustration with only 10 easily accessible workspaces in i3. I iterated on a few different systems with varying levels of effectiveness. 
