@@ -2,7 +2,7 @@
 
 ## What is i3-ws-groups?
 
-i3-ws-groups is a fork of [i3-ws-groups](https://github.com/Airblader/i3), a tiling window manager for X11. It is kept up to date with upstream, adding a few additional features such as workspace groups.
+i3-ws-groups is a fork of [i3-gaps](https://github.com/Airblader/i3), a tiling window manager for X11. It is kept up to date with upstream, adding a few additional features such as workspace groups.
 
 ![i3](preview.png)
 Picture taken from my current hacky implementation which I fear the consequences of unleashing upon the world...also, yes, I like the solarized theme
