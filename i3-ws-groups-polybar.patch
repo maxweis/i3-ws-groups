@@ -1,0 +1,57 @@
+diff --git a/src/modules/i3.cpp b/src/modules/i3.cpp
+index 43d175cb..64f2173c 100644
+--- a/src/modules/i3.cpp
++++ b/src/modules/i3.cpp
+@@ -1,6 +1,11 @@
+ #include "modules/i3.hpp"
+ 
+ #include <sys/socket.h>
++#include <fstream>
++#include <unistd.h>
++#include <sys/types.h>
++#include <pwd.h>
++#include <cstring>
+ 
+ #include "drawtypes/iconset.hpp"
+ #include "drawtypes/label.hpp"
+@@ -137,6 +142,22 @@ namespace modules {
+         sort(workspaces.begin(), workspaces.end(), i3_util::ws_numsort);
+       }
+ 
++      // Get workspace group from i3-ws-group file
++      std::string ws_group;
++
++      const char *home_dir = nullptr;
++      if ((home_dir = getenv("HOME")) == nullptr) {
++        home_dir = getpwuid(getuid())->pw_dir;
++      }
++
++      string group_filepath(home_dir);
++      group_filepath += "/.i3-ws-groups";
++      std::ifstream group_file (group_filepath);
++      if (group_file.is_open()) {
++        std::getline(group_file, ws_group);
++      }
++      group_file.close();
++
+       for (auto&& ws : workspaces) {
+         state ws_state{state::NONE};
+ 
+@@ -157,6 +178,17 @@ namespace modules {
+           ws_name.erase(0, string_util::find_nth(ws_name, 0, ":", 1) + 1);
+         }
+ 
++        // Skip rendering workspace if not in current workspace group, const workspace, or focused
++        bool in_group = !(ws_name.rfind(ws_group, 0) != 0 && ws_name.rfind("const", 0) != 0);
++        if (!ws->focused && !in_group) {
++          continue;
++        }
++
++        // Remove workspace group from name when rendering unless in another group
++        if (in_group) {
++          ws_name.erase(0, string_util::find_nth(ws_name, 0, ":", 1) + 1);
++        }
++
+         // Trim leading and trailing whitespace
+         ws_name = string_util::trim(move(ws_name), ' ');
+ 
