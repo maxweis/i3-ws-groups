@@ -1,0 +1,10 @@
+[bar/bar]
+modules-left = i3 
+modules-center =  xwindow
+modules-right = i3-ws-group date time username powermenu 
+
+; prints out current workspace group
+[module/i3-ws-group]
+type = custom/script
+exec = i3-ws-groups current
+interval = 1

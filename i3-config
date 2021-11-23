@@ -1,0 +1,72 @@
+# workspace names
+set $ws1 1:REF 1
+set $ws2 2:EDIT 2
+set $ws3 3:TEST 3
+set $ws4 4:WORK 4
+set $ws5 5:SYS 5
+set $ws6 6:MISC 6
+set $ws7 7:WEB 7
+set $ws8 8:const:GAME 8
+set $ws9 9:CHAT 9
+set $ws10 10:const:MUSIC 10
+
+# workspaces in default group
+set $dws1 1:default:REF 1
+set $dws2 2:default:EDIT 2
+set $dws3 3:default:TEST 3
+set $dws4 4:default:WORK 4
+set $dws5 5:default:SYS 5
+set $dws6 6:default:MISC 6
+set $dws7 7:default:WEB 7
+set $dws8 8:const:GAME 8
+set $dws9 9:default:CHAT 9
+
+# initialize workspace groups
+exec --no-startup-id "i3-ws-groups init"
+
+# select new workspace group with rofi
+bindsym Mod1+n exec "i3-ws-groups selector --instant"
+bindsym Mod1+Shift+n exec "i3-ws-groups selector"
+
+# reset to default group
+bindsym Mod1+g exec "i3-ws-groups set default --instant"
+bindsym Mod1+Shift+g exec "i3-ws-groups set default"
+
+# launch patched polybar
+exec_always --no-startup-id /home/max/.config/polybar/launch.sh
+
+# switch workspace
+bindsym $super+1 exec i3-ws-groups ws-switch "$ws1"
+bindsym $super+2 exec i3-ws-groups ws-switch "$ws2"
+bindsym $super+3 exec i3-ws-groups ws-switch "$ws3"
+bindsym $super+4 exec i3-ws-groups ws-switch "$ws4"
+bindsym $super+5 exec i3-ws-groups ws-switch "$ws5"
+bindsym $super+6 exec i3-ws-groups ws-switch "$ws6"
+bindsym $super+7 exec i3-ws-groups ws-switch "$ws7"
+bindsym $super+8 exec i3-ws-groups ws-switch "$ws8"
+bindsym $super+9 exec i3-ws-groups ws-switch "$ws9"
+bindsym $super+0 exec i3-ws-groups ws-switch "$ws10"
+
+# move focused container to workspace
+bindsym $super+Shift+1 exec i3-ws-groups ws-move "$ws1"
+bindsym $super+Shift+2 exec i3-ws-groups ws-move "$ws2"
+bindsym $super+Shift+3 exec i3-ws-groups ws-move "$ws3"
+bindsym $super+Shift+4 exec i3-ws-groups ws-move "$ws4"
+bindsym $super+Shift+5 exec i3-ws-groups ws-move "$ws5"
+bindsym $super+Shift+6 exec i3-ws-groups ws-move "$ws6"
+bindsym $super+Shift+7 exec i3-ws-groups ws-move "$ws7"
+bindsym $super+Shift+8 exec i3-ws-groups ws-move "$ws8"
+bindsym $super+Shift+9 exec i3-ws-groups ws-move "$ws9"
+bindsym $super+Shift+0 exec i3-ws-groups ws-move "$ws10"
+
+# move focused window to default workspace
+bindsym $super+Ctrl+1 exec i3-ws-groups ws-switch "$dws1"
+bindsym $super+Ctrl+2 exec i3-ws-groups ws-switch "$dws2"
+bindsym $super+Ctrl+3 exec i3-ws-groups ws-switch "$dws3"
+bindsym $super+Ctrl+4 exec i3-ws-groups ws-switch "$dws4"
+bindsym $super+Ctrl+5 exec i3-ws-groups ws-switch "$dws5"
+bindsym $super+Ctrl+6 exec i3-ws-groups ws-switch "$dws6"
+bindsym $super+Ctrl+7 exec i3-ws-groups ws-switch "$dws7"
+bindsym $super+Ctrl+8 exec i3-ws-groups ws-switch "$dws8"
+bindsym $super+Ctrl+9 exec i3-ws-groups ws-switch "$dws9"
+bindsym $super+Ctrl+0 exec i3-ws-groups ws-switch "$dws10"
