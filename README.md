@@ -17,17 +17,19 @@ For instance, I used it in college to have a workspace group for each class, wit
 ## Installation
 * Patch polybar using `i3-ws-groups-polybar.patch` (can easily create patches for other status bars)
 * Add `i3-ws-groups` to PATH
-* Add to i3 configuration
+* Add to i3 configuration (example in `example_configs/i3-config`)
   * Add initialization <br>
     `exec --no-startup-id "i3-ws-groups init"`
   * Change workspace switch bindings <br>
-    `bindsym $super+1 workspace 1` -> `bindsym $mod+1 exec "i3-ws-groups ws-switch 1:1"` <br>
+    `bindsym $mod+1 workspace 1` -> `bindsym $mod+1 exec "i3-ws-groups ws-switch 1:1"` <br>
     (workspaces must be referenced as `[order_number]:[name]` for current group workspace or <br>
     `[order_number]:const:[name]` to be accessible from any workspace group)
+  * Change workspace window move bindings <br>
+    `bindsym $mod+Shift+1 move container to workspace 1:1` -> `bindsym $mod+Shift+1 exec "i3-ws-groups ws-move 1:1"`
   * Add workspace group selector bindings <br> 
     `bindsym Mod1+n exec "i3-ws-groups selector --instant"` <br>
     `bindsym Mod1+Shift+n exec "i3-ws-groups selector"` (used to switch windows between groups)
-* Add current workspace name to polybar
+* Add current workspace name display to polybar (example in `example_configs/polybar-config`)
   * Add to bar modules
     `modules-right = i3-ws-group date time username powermenu`
   * Add module definition
@@ -37,8 +39,6 @@ For instance, I used it in college to have a workspace group for each class, wit
     exec = i3-ws-groups current
     interval = 1
      ```
-  * Changes polybar i3 module behavior to not show workspaces outside of the current group
-  * Removes group name from workspace name in status bar
 
 ## Dependencies
 * python3
