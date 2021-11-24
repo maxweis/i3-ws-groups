@@ -37,7 +37,6 @@ For instance, I used it in college to have a workspace group for each class, wit
     exec = i3-ws-groups current
     interval = 1
      ```
-  
   * Changes polybar i3 module behavior to not show workspaces outside of the current group
   * Removes group name from workspace name in status bar
 
